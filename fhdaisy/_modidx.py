@@ -2,8 +2,8 @@
 
 d = { 'settings': { 'branch': 'main',
                 'doc_baseurl': '/fhdaisy',
-                'doc_host': 'https://fastai.github.io',
-                'git_url': 'https://github.com/fastai/fhdaisy',
+                'doc_host': 'https://answerdotai.github.io',
+                'git_url': 'https://github.com/answerdotai/fhdaisy',
                 'lib_path': 'fhdaisy'},
   'syms': { 'fhdaisy.comp': {},
             'fhdaisy.core': { 'fhdaisy.core.hyphens2camel': ('core.html#hyphens2camel', 'fhdaisy/core.py'),

@@ -9,24 +9,30 @@ from fasthtml.common import *
 from .comp import *
 import fasthtml.components as fh
 
-# %% ../nbs/01_xtras.ipynb 5
-def ChatTurn(msg, cls='', bubblecls='', **kw):
+# %% ../nbs/01_xtras.ipynb 6
+def ChatTurn(
+    msg, # Text to display
+    cls='',  # Class of the `Chat`
+    bubblecls='', # Class of the `ChatBubble`
+    **kw
+):
+    "A `ChatBubble` in a `Chat`, representing one turn in a chat"
     return Chat(cls=cls, **kw)(
         ChatBubble(msg, cls=bubblecls)
     )
 
-# %% ../nbs/01_xtras.ipynb 7
+# %% ../nbs/01_xtras.ipynb 8
 def ChatPair(q, a):
     return ChatTurn(q, cls='-start'), ChatTurn(a, cls='-end', bubblecls='-primary')
 
-# %% ../nbs/01_xtras.ipynb 13
+# %% ../nbs/01_xtras.ipynb 14
 def mk_dropdown(summary, items, summcls='', cls='', **kw):
     return Dropdown(
         fh.Summary(summary, cls=summcls),
         DropdownContent(*items, cls=f'{cls} menu', **kw)
     )
 
-# %% ../nbs/01_xtras.ipynb 17
+# %% ../nbs/01_xtras.ipynb 18
 def mk_fab(txt, main, items, maincls='-success', btncls='-lg -circle', cls='', **kw):
     return Fab(
         Btn(txt, tabindex='0', cls=f'{maincls} {btncls}'),
@@ -35,7 +41,7 @@ def mk_fab(txt, main, items, maincls='-success', btncls='-lg -circle', cls='', *
         cls=cls, **kw
     )
 
-# %% ../nbs/01_xtras.ipynb 21
+# %% ../nbs/01_xtras.ipynb 22
 def mk_swap(on, off, cls='', **kw):
     return Swap(
         fh.Input(type='checkbox'),
@@ -44,7 +50,7 @@ def mk_swap(on, off, cls='', **kw):
         cls=cls, **kw
     )
 
-# %% ../nbs/01_xtras.ipynb 27
+# %% ../nbs/01_xtras.ipynb 28
 def mk_accordion_item(title, content, name='accordion', checked=False, cls='', titlecls='', contentcls='', **kw):
     return Collapse(
         fh.Input(type='radio', name=name, checked=checked),
@@ -52,7 +58,7 @@ def mk_accordion_item(title, content, name='accordion', checked=False, cls='', t
         CollapseContent(content, cls=contentcls),
         cls=cls, **kw)
 
-# %% ../nbs/01_xtras.ipynb 31
+# %% ../nbs/01_xtras.ipynb 32
 def mk_accordion(*items, name=None, cls='', itemcls='', titlecls='', contentcls='', itemkw=None, **kw):
     if not name: name = f'acc-{id(items)}'
     if not itemkw: itemkw={}
